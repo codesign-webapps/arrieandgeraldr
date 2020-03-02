@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 /* Import Dependencies */
 const express = require("express");
 const path = require("path");
@@ -22,6 +24,8 @@ app.use(express.json());
 /* Serve Static Assets */
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
+} else {
+    app.use(express.static(__dirname + "/client"));
 }
 
 /* Routes */
